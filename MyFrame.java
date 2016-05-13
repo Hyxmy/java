@@ -1,7 +1,7 @@
 /**
  * @(#)MyFrame.java
  *
- *Ò»¸ö¼òµ¥µÇÂ¼½çÃæ£¬Î´¼àÌı´°ÌåÊÂ¼ş
+ *ä¸€ä¸ªç®€å•ç™»å½•ç•Œé¢ï¼Œå·²ç›‘å¬çª—ä½“äº‹ä»¶
  * @author 
  * @version 1.00 2016/5/4
  */
@@ -9,49 +9,58 @@
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
-public class MyFrame extends JFrame implements ActionListener{
+public class aFrame extends JFrame implements ActionListener,WindowListener{
 	private Label name,password,a;
 	private JTextField name1;
 	private JPasswordField password1;
 	private JButton ok,cancel;
-    public MyFrame() {
-    super("µÇÂ¼½çÃæ");
+    public aFrame() {
+    super("ç™»å½•ç•Œé¢");
     setLayout(new FlowLayout());
     setSize(400,100);
     setLocation(300,300);
     setBackground(Color.lightGray);
-    name = new Label("ÓÃ»§Ãû£º");
+    name = new Label("ç”¨æˆ·åï¼š");
     add(name);
     name1 = new JTextField("123");
     add(name1);
-    password = new Label("ÃÜÂë£º");
+    password = new Label("å¯†ç ï¼š");
     add(password);
     password1 = new JPasswordField("123123");
     add(password1);
-    ok = new JButton("È·¶¨");
+    ok = new JButton("ç¡®å®š");
     add(ok);
-    cancel = new JButton("È¡Ïû");
+    cancel = new JButton("å–æ¶ˆ");
     add(cancel);
     add(new Label(" "));
     a = new Label(" ");
     add(a);
     setVisible(true);
     ok.addActionListener(this);
-    cancel.addActionListener(this);
+    cancel.addActionListener(this); 
+    addWindowListener(this);
     }
     public void actionPerformed(ActionEvent e){
     	if(e.getSource()==cancel)System.exit(0);
-    	if(e.getActionCommand().equals("È·¶¨")){
+    	if(e.getActionCommand().equals("ç¡®å®š")){
     		String keyText= new String(password1.getPassword());
     		if(name1.getText().equals("123") && keyText.equals("123123"))
-    			a.setText("»¶Ó­Äã£¬123");
+    			a.setText("æ¬¢è¿ä½ ï¼Œ123");
     		else
-    			a.setText("ÓÃ»§Ãû»òÃÜÂë´íÎó£¡");
+    			a.setText("ç”¨æˆ·åæˆ–å¯†ç é”™è¯¯ï¼");
     		setVisible(true);
     	}
     }
+    public void windowClosing(WindowEvent e){System.exit(0);
+    }
+    public void windowOpened(WindowEvent e){;}
+    public void windowActivated(WindowEvent e){;}
+    public void windowDeactivated(WindowEvent e){;}
+    public void windowClosed(WindowEvent e){;}
+    public void windowIconified(WindowEvent e){;}
+    public void windowDeiconified(WindowEvent e){;}
     public static void main(String[] args){
-    	MyFrame A=new MyFrame();
+    	aFrame A=new aFrame();
     	
     }
     
